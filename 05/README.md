@@ -2,9 +2,42 @@
 
 &nbsp;
 
-# `#05` {module-name-in-pdf}
+# `#05` JWT: Ręczne odczytywanie payloadu tokenu w widoku
 
-Tutaj treść
+
+**Cel:** nauczyć się ręcznie odczytywać informacje zapisane w **payloadzie JWT** w kodzie widoku oraz wykorzystać je w logice aplikacji.
+
+## Zakres zadania
+
+1. Stwórz nowy projekt Django + DRF z obsługą JWT (Simple JWT).
+2. W `settings.py` upewnij się, że masz ustawioną autoryzację JWT w `REST_FRAMEWORK`.
+3. Utwórz widok DRF (funkcyjny lub klasowy), który:
+   - wymaga zalogowania (`IsAuthenticated`),
+   - pobiera **payload tokenu** z obiektu `request.auth`,
+   - zwraca go w odpowiedzi JSON (np. `{ "token_payload": { ... } }`).
+4. Przetestuj zachowanie dla poprawnego i niepoprawnego tokenu.
+
+---
+
+## Wymagania funkcjonalne
+
+- **Poprawny token** → widok zwraca status `200 OK` oraz JSON z pełnym payloadem tokenu.
+- **Brak lub niepoprawny token** → status `401 Unauthorized`.
+- Payload zawiera zarówno domyślne pola Simple JWT (`exp`, `user_id`, `token_type`), jak i dodatkowe, jeśli zostały dodane w Twoim projekcie.
+
+---
+
+## Wskazówki
+
+- W Simple JWT po uwierzytelnieniu przez `JWTAuthentication`, obiekt `request.auth` zawiera zweryfikowany **payload tokenu** w postaci słownika.
+- Możesz użyć tego mechanizmu do uzyskania informacji takich jak `user_id` itp.
+---
+
+## Kryteria akceptacji
+
+- [ ] Projekt utworzony w osobnym katalogu z pełną konfiguracją JWT.
+- [ ] Widok poprawnie zwraca payload tokenu w odpowiedzi JSON.
+- [ ] Odpowiedź API różni się w przypadku braku lub błędnego tokenu (`401 Unauthorized`).
 
 
 &nbsp;
