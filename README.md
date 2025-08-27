@@ -2,9 +2,7 @@
 
 &nbsp;
 
-# {module-name-in-pdf}
-
-
+# Django: DRF autoryzacja
 
 
 &nbsp;
