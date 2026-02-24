@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from JWT_app.views import TokenView
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/token/payload/', TokenView.as_view()),
+    path('api/token/', TokenObtainPairView.as_view()),
 ]
