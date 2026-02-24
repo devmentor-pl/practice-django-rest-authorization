@@ -16,7 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from acl_app.views import NoteDetailView
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/note/<int:pk>/', NoteDetailView.as_view()),
+    path('api/token/', TokenObtainPairView.as_view()),
+    path('api/refresh/', TokenRefreshView.as_view()),
 ]
