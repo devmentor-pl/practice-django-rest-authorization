@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from acl_app.views import NoteDetailView
+from acl_app.views import NoteDetailView, NewNoteView
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,)
@@ -26,4 +26,5 @@ urlpatterns = [
     path('api/note/<int:pk>/', NoteDetailView.as_view()),
     path('api/token/', TokenObtainPairView.as_view()),
     path('api/refresh/', TokenRefreshView.as_view()),
+    path('api/note/', NewNoteView.as_view()),
 ]
